@@ -1,0 +1,20 @@
+{
+  "name": "online-resume",
+  "version": "1.0.0",
+  "description": "it's an online resume editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XtLee/online-resume.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/XtLee/online-resume/issues"
+  },
+  "homepage": "https://github.com/XtLee/online-resume#readme"
+}
