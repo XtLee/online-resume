@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 300px;
+    padding: 16px 240px;
     box-shadow: 0 0 3px 2px rgba(0,0,0,.2);
     background: white;
   }

@@ -31,7 +31,9 @@ export default {
 #app > main {
   display: flex;
   flex: 1;
-  max-width: 1200px;
+  max-width: 1450px;
+  height: calc(100vh - 88px);
+  overflow: hidden;
   margin: 8px auto;
 }
 </style>

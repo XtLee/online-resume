@@ -14,7 +14,7 @@
         <p><span>B</span> https://www.jianshu.com/u/a1af6c5d3853</p>
       </div>
     </header>
-    <middle>
+    <main>
       <div id="work">
         <h3>WORK EXPERIENCE</h3>
         <ul>
@@ -33,8 +33,8 @@
           </li>
         </ul>
       </div>
-    </middle>
-    <bottom>
+    </main>
+    <div class="bottom">
       <div id="extra">
         <h3>EXTRA CURRICULAR ACTIVITIES</h3>
         <div class="act">
@@ -54,7 +54,7 @@
           </li>
         </ul>
       </div>
-    </bottom>
+    </div>
   </div>
   </div>
 </template>
