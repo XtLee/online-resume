@@ -11,29 +11,20 @@
     </ol>
     <ol class="pannels">
       <li v-bind:class="{active: currentTab === 0}">
-				<h2>个人信息</h2>
-				<el-form>
-					<el-form-item label="姓名">
-						<el-input v-model="profile.name"></el-input>
-					</el-form-item>
-					<el-form-item label="城市">
-						<el-input v-model="profile.city"></el-input>
-					</el-form-item>
-					<el-form-item label="出生年月">
-						<el-input v-model="profile.birth"></el-input>
-					</el-form-item>
-				</el-form>
+				<profileEditor v-bind:profile="profile"/>
 			</li>
 			<li v-bind:class="{active: currentTab === 1}">
 				<h2>工作经历</h2>
 				<el-form>
-					<div v-for="(work, index) in workExperience">
+					<div class="workExperience" v-for="(work, index) in workExperience">
 						<el-form-item label="公司名称">
 							<el-input v-model="work.company"></el-input>
 						</el-form-item>
 						<el-form-item label="工作内容">
 							<el-input v-model="work.content"></el-input>
 						</el-form-item>
+						<el-button class="remove" type="primary" icon="el-icon-delete" v-on:click="removeWorkExperience(index)"></el-button>
+						<hr>
 					</div>
 					<el-button type="primary" v-on:click="addWorkExperience">添加</el-button>
 				</el-form>
@@ -97,7 +88,9 @@
 
 
 <script>
+import profileEditor from './profileEditor.vue'
 export default {
+	components: { profileEditor },
   data() {
     return {
       currentTab: 0,
@@ -177,13 +170,35 @@ export default {
   > .pannels {
 		overflow: auto;
 		width: 100%;
+		padding: 32px;
+
     li {
       display: none;
 
       &.active {
         display: block;
-      }
-    }
+			}
+			
+		}
+
+		.workExperience {
+			position: relative;
+
+			.remove {
+				position: absolute;
+				top: 8px;
+				right: 0;
+				padding: 4px 8px;
+			}
+
+			> hr {
+				margin-bottom: 16px;
+				border-color: rgba(0, 0, 0, 0.1);
+			}
+		}
+
+
+    
   }
 }
 </style>
