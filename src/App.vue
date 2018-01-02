@@ -2,8 +2,8 @@
   <div id="app">
     <Header />
     <main>
-      <Editor />
-      <ShowPage />
+      <Editor v-bind:resume="resume"/>
+      <ShowPage v-bind:resume="resume"/>
     </main>
   </div>
 </template>
@@ -17,6 +17,38 @@ export default {
   name: 'app',
   components: {
     Header, Editor, ShowPage
+  },
+  data() {
+    return {
+      resume: {
+          profile: {
+          name: "",
+          city: "",
+          job: ""
+        },
+        workExperience: [
+          {company: '',content: ''}
+        ],
+        studyExperience: [
+          {school: '', duration: '', degree: ''}
+        ],
+        projectsExperience: [
+          {project: '', content: ''}
+        ],
+        winningExperience: [
+          {winningName: '', duration: ''}
+        ],
+        skills: [
+          {name: ''}
+        ],
+        contact: {
+          qq: '',
+          wechat: '',
+          phone: '',
+          mail: ''
+        }
+      }
+    }
   }
 }
 </script>

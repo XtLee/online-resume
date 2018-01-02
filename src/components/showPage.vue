@@ -62,14 +62,17 @@
 
 <script>
 export default {
-  
+  props: ['resume']
 }
 </script>
 
 
 <style lang="less">
 #showPage {
-  border: 1px solid greenyellow;
+  border-radius: 7px;
+  background: white;
+  margin: 3px 24px 3px 0;
+  box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.4);
 }
 </style>
 

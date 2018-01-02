@@ -11,42 +11,42 @@
     </ol>
     <ol class="pannels">
       <li v-bind:class="{active: currentTab === 0}">
-				<profileEditor v-bind:profile="profile"/>
+				<profileEditor v-bind:profile="resume.profile"/>
 			</li>
 			<li v-bind:class="{active: currentTab === 1}">
-				<ArrayEditor v-bind:items="workExperience" v-bind:labels="{company: '公司', content: '工作经历'}"
+				<ArrayEditor v-bind:items="resume.workExperience" v-bind:labels="{company: '公司', content: '工作经历'}"
 				title="工作经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 2}">
-				<ArrayEditor v-bind:items="studyExperience" v-bind:labels="{school: '学校名称', duration: '时间', degree: '学位'}"
+				<ArrayEditor v-bind:items="resume.studyExperience" v-bind:labels="{school: '学校名称', duration: '时间', degree: '学位'}"
 				title="学习经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 3}">
-				<ArrayEditor v-bind:items="projectsExperience" v-bind:labels="{project: '项目名称',  content: '项目内容'}"
+				<ArrayEditor v-bind:items="resume.projectsExperience" v-bind:labels="{project: '项目名称',  content: '项目内容'}"
 				title="项目经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 4}">
-				<ArrayEditor v-bind:items="winningExperience" v-bind:labels="{winningName: '奖励名称',  duration: '获奖时间'}"
+				<ArrayEditor v-bind:items="resume.winningExperience" v-bind:labels="{winningName: '奖励名称',  duration: '获奖时间'}"
 				title="获奖经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 5}">
-				<ArrayEditor v-bind:items="skills" v-bind:labels="{name: '专业技能'}"
+				<ArrayEditor v-bind:items="resume.skills" v-bind:labels="{name: '专业技能'}"
 				title="技能清单" />
 			</li>
 			<li v-bind:class="{active: currentTab === 6}">
 				<h2>联系方式</h2>
 				<el-form>
 					<el-form-item label="QQ">
-						<el-input v-model="contact.qq"></el-input>
+						<el-input v-model="resume.contact.qq"></el-input>
 					</el-form-item>
 					<el-form-item label="Wechat">
-						<el-input v-model="contact.wechat"></el-input>
+						<el-input v-model="resume.contact.wechat"></el-input>
 					</el-form-item>
 					<el-form-item label="Phone">
-						<el-input v-model="contact.phone"></el-input>
+						<el-input v-model="resume.contact.phone"></el-input>
 					</el-form-item>
 					<el-form-item label="E-mail">
-						<el-input v-model="contact.mail"></el-input>
+						<el-input v-model="resume.contact.mail"></el-input>
 					</el-form-item>
 				</el-form>
 			</li>
@@ -62,36 +62,11 @@ export default {
 	components: { 
 		profileEditor, ArrayEditor
 	},
+	props: ['resume'],
   data() {
     return {
       currentTab: 0,
       icons: ["shenfenzheng", "bag", "book", "project", "icongroup05", "jineng", "phone"],
-      profile: {
-        name: "",
-        city: "",
-        birth: ""
-      },
-			workExperience: [
-				{company: '',content: ''}
-			],
-			studyExperience: [
-				{school: '', duration: '', degree: ''}
-			],
-			projectsExperience: [
-				{project: '', content: ''}
-			],
-			winningExperience: [
-				{winningName: '', duration: ''}
-			],
-			skills: [
-				{name: ''}
-			],
-			contact: {
-				qq: '',
-				wechat: '',
-				phone: '',
-				mail: ''
-			}
     };
   },
 	methods: {

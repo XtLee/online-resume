@@ -8,8 +8,8 @@
         <el-form-item label="城市">
           <el-input v-model="profile.city"></el-input>
         </el-form-item>
-        <el-form-item label="出生年月">
-          <el-input v-model="profile.birth"></el-input>
+        <el-form-item label="求职岗位">
+          <el-input v-model="profile.job"></el-input>
         </el-form-item>
       </el-form>
     </div>
