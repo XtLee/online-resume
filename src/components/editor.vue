@@ -14,15 +14,15 @@
 				<profileEditor v-bind:profile="resume.profile"/>
 			</li>
 			<li v-bind:class="{active: currentTab === 1}">
-				<ArrayEditor v-bind:items="resume.workExperience" v-bind:labels="{company: '公司', content: '工作经历'}"
+				<ArrayEditor v-bind:items="resume.workExperience" v-bind:labels="{company: '公司', time: '工作时间', content: '工作经历'}"
 				title="工作经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 2}">
 				<ArrayEditor v-bind:items="resume.studyExperience" v-bind:labels="{school: '学校名称', duration: '时间', degree: '学位'}"
-				title="学习经历" />
+				title="教育经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 3}">
-				<ArrayEditor v-bind:items="resume.projectsExperience" v-bind:labels="{project: '项目名称',  content: '项目内容'}"
+				<ArrayEditor v-bind:items="resume.projectsExperience" v-bind:labels="{name: '项目名称',  content: '项目内容'}"
 				title="项目经历" />
 			</li>
 			<li v-bind:class="{active: currentTab === 4}">
@@ -85,14 +85,13 @@ export default {
   overflow: hidden;
 }
 #editor {
-  min-width: 550px;
+  width: 550px;
   overflow: hidden;
   border-radius: 7px;
   background: white;
   margin: 3px 24px 3px 16px;
   box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.4);
   display: flex;
-  flex: 1;
 
   ol {
     list-style: none;

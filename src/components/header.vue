@@ -4,10 +4,21 @@
     <div class="buttons">
       <el-button type="primary">注册</el-button>
       <el-button plain>登录</el-button>
+      <el-button plain v-on:click="preview">预览</el-button>
     </div>
 
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    preview() {
+      this.$emit('preview')
+    } 
+  }
+}
+</script>
 
 
 

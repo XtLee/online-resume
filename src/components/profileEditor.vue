@@ -11,6 +11,9 @@
         <el-form-item label="求职岗位">
           <el-input v-model="profile.job"></el-input>
         </el-form-item>
+        <el-form-item label="个人博客">
+          <el-input v-model="profile.blog"></el-input>
+        </el-form-item>
       </el-form>
     </div>
 </template>
