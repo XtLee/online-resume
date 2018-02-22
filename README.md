@@ -1,4 +1,4 @@
-# online-resume
+# Vue-resume
 
 > A Vue.js project
 
