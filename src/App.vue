@@ -1,50 +1,43 @@
 <template>
-  <div id="app" v-bind:class="{previewMode: previewMode}">
-    <Header class="header" v-on:preview="preview"/>
+  <div id="app" :class="{previewMode: previewMode}">
+    <Header class="header" @preview="preview"/>
     <main>
-      <Editor v-bind:resume="resume"/>
-      <ShowPage v-bind:resume="resume"/>
+      <Editor/>
+      <Preview/>
     </main>
-    <el-button type="primary" class="exit" v-on:click="exitPreview">退出预览</el-button>
+    <el-button type="primary" class="exit" @click="exitPreview">退出预览</el-button>
   </div>
 </template>
 
 <script>
 import Header from "./components/header.vue";
 import Editor from "./components/editor.vue";
-import ShowPage from "./components/showPage.vue";
+import Preview from "./components/preview.vue";
+import store from "./store/index.js";
+import AV from "./lib/leancloud.js";
+import getAVUser from "./lib/getAVUser.js";
 
 export default {
   name: "app",
   components: {
     Header,
     Editor,
-    ShowPage
+    Preview
+  },
+  created() {
+    let state = localStorage.getItem("state");
+    if (state) {
+      state = JSON.parse(state);
+    }
+    this.$store.commit("initState", state);
+    this.$store.commit("setUser", getAVUser());
   },
   data() {
     return {
-      previewMode: false,
-      resume: {
-        profile: {
-          name: "",
-          city: "",
-          job: "",
-          blog: ""
-        },
-        workExperience: [{ company: "", time: "", content: "" }],
-        studyExperience: [{ school: "", duration: "", degree: "" }],
-        projectsExperience: [{ name: "", content: "" }],
-        winningExperience: [{ winningName: "", duration: "" }],
-        skills: [{ name: "" }],
-        contact: {
-          qq: "",
-          wechat: "",
-          phone: "",
-          mail: ""
-        }
-      }
+      previewMode: false
     };
   },
+  store,
   methods: {
     preview() {
       this.previewMode = true;
@@ -57,6 +50,14 @@ export default {
 </script>
 
 <style>
+.icon {
+  width: 2em;
+  height: 2em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  cursor: pointer;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

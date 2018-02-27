@@ -4,39 +4,39 @@
     <header>
       <div id="intro">
             <h1>{{resume.profile.name}}</h1>
-            <h4>{{resume.profile.job}}</h4>
+            <h4>{{resume.profile.title}}</h4>
       </div>
       <div id="contacts">
-        <h3 class='contacts' v-if="resume.contact.phone.length > 0">联系方式</h3>
+        <h3 class='contacts' v-if="resume.contacts.length > 0">联系方式</h3>
         <p v-if="resume.profile.city.length > 0"><span>A</span> {{resume.profile.city}}</p>
-        <p v-if="resume.contact.phone.length > 0"><span>M</span>{{resume.contact.phone}}</p>
-        <p v-if="resume.contact.mail.length > 0"><span>E</span> {{resume.contact.mail}}</p>
-        <p v-if="resume.profile.blog.length > 0"><span>B</span> {{resume.profile.blog}}</p>
+        <p v-if="resume.contacts.phone.length > 0"><span>M</span>{{resume.contacts.phone}}</p>
+        <p v-if="resume.contacts.mail.length > 0"><span>E</span> {{resume.contacts.mail}}</p>
+        <p v-if="resume.contacts.blog.length > 0"><span>B</span> {{resume.contacts.blog}}</p>
       </div>
     </header>
     <main>
-      <div id="work" v-if="filter(resume.workExperience).length > 0">
+      <div id="work" v-if="filter(resume.work).length > 0">
         <h3>工作经历</h3>
         <ul>
-          <li v-for="work in filter(resume.workExperience)">
-            <p>{{work.company}} / <span class='date'>{{work.time}}</span></p>
-            {{work.content}}
+          <li v-for="workHis in filter(resume.work)">
+            <p>{{workHis.company}} / <span class='date'>{{workHis.time}}</span></p>
+            {{workHis.content}}
           </li>
         </ul>
       </div>
-      <div id="edu" v-if="filter(resume.studyExperience).length > 0">
+      <div id="edu" v-if="filter(resume.education).length > 0">
         <h3>教育经历</h3>
         <ul>
-          <li v-for="study in filter(resume.studyExperience)">
+          <li v-for="study in filter(resume.education)">
             <p>{{study.school}} / <span class="date">{{study.duration}}</span></p>
             {{study.degree}}
           </li>
         </ul>
       </div>
-      <div id="pro" v-if="filter(resume.projectsExperience).length > 0">
+      <div id="pro" v-if="filter(resume.projects).length > 0">
         <h3>项目经历</h3>
         <ul>
-          <li v-for="project in filter(resume.projectsExperience)">
+          <li v-for="project in filter(resume.projects)">
             <p>{{project.name}}</p>
             {{project.content}}
           </li>
@@ -44,24 +44,15 @@
       </div>
     </main>
     <div class="bottom">
-      <div id="extra" v-if="filter(resume.winningExperience).length > 0">
+      <div id="extra" v-if="filter(resume.awards).length > 0">
         <h3>获奖经历</h3>
-        <div class="act" v-for="winning in filter(resume.winningExperience)">
+        <div class="act" v-for="winning in filter(resume.awards)">
           <div class="icon"></div>
           <div class="value">
-            <p>{{winning.winningName}}</p>
-            {{winning.duration}}
+            <p>{{winning.name}}</p>
+            {{winning.content}}
           </div>
         </div>
-      </div>
-      <div id="skills" v-if="filter(resume.skills).length > 0">
-        <h3>技能清单</h3>
-        <ul>
-          <li v-for="skill in filter(resume.skills)">
-            <div class="icon"></div>
-            <span>{{skill.name}}</span>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
@@ -71,7 +62,13 @@
 
 <script>
 export default {
-  props: ["resume"],
+  computed: {
+    resume() {
+      return this.$store.state.resume
+    }
+  },
+  created() {
+  },
   methods: {
     filter(array) {
       return array.filter(item => !this.isEmpty(item));
@@ -92,6 +89,7 @@ export default {
 
 
 <style lang="less">
+p {white-space: pre-line;}
 #showPage {
   flex: 1;
   border-radius: 7px;
