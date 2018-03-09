@@ -1,6 +1,6 @@
 # Vue-resume
 
-> A Vue.js project
+使用Vue/Vue-cli/Vuex构建在线简历编辑器。使用leancloud作为后台管理。支持登录注册，在线编辑，在线预览。
 
 ## Build Setup
 
